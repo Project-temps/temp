@@ -1,4 +1,5 @@
 {# ui/templates/base.html #}
+{% load static plotly_dash %} 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,8 +20,10 @@
     {# اسکریپت‌های پیکربندی Sneat #}
     <script src="{% static 'sneat/assets/vendor/js/helpers.js' %}"></script>
     <script src="{% static 'sneat/assets/js/config.js' %}"></script>
+    {% plotly_header %} 
   </head>
   <body>
+    {% plotly_body %} 
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         {# 1) سایدبار #}
@@ -48,5 +51,6 @@
     <script src="{% static 'sneat/assets/js/main.js' %}"></script>
     <script src="{% static 'sneat/assets/js/dashboards-analytics.js' %}"></script>
     {% block extra_js %}{% endblock %}
+    {% plotly_footer %} 
   </body>
 </html>
