@@ -4,7 +4,7 @@ from django.core.management.base import BaseCommand
 from api.models import Farm, SensorReading
 
 class Command(BaseCommand):
-    help = "Load merged_sensor_data.csv into SensorReading"
+    help = "Load hourly_merged_sensor_data.csv into SensorReading"
 
     def add_arguments(self, parser):
         parser.add_argument("--country", required=True)
@@ -13,7 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args, **opts):
         country   = opts["country"]
         farm_name = opts["farm"]
-        csv_path  = Path("data/processed") / country / "merged_sensor_data.csv"
+        csv_path  = Path("data/processed") / country / "hourly_merged_sensor_data.csv"
         df        = pd.read_csv(csv_path, parse_dates=["datetime"])
 
         farm, _ = Farm.objects.get_or_create(name=farm_name, country=country)

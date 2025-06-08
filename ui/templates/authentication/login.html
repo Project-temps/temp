@@ -1,7 +1,7 @@
 <!-- authentication/templates/authentication/login.html -->
 {% extends "base.html" %}
 {% load static %}
-{% block title %}ورود • ET4D{% endblock %}
+{% block title %}Login • ET4D{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
@@ -9,7 +9,7 @@
     <div class="col-md-5">
       <div class="card shadow-sm">
         <div class="card-header text-center">
-          <h4>ورود به ET4D</h4>
+          <h4>Login to ET4D</h4>
         </div>
         <div class="card-body">
           {% if messages %}
@@ -24,19 +24,19 @@
           <form method="post" novalidate>
             {% csrf_token %}
             <div class="mb-3">
-              <label for="id_username" class="form-label">نام کاربری</label>
+              <label for="id_username" class="form-label">Username</label>
               <input type="text" name="username" class="form-control" id="id_username" required>
             </div>
             <div class="mb-3">
-              <label for="id_password" class="form-label">رمز عبور</label>
+              <label for="id_password" class="form-label">Password</label>
               <input type="password" name="password" class="form-control" id="id_password" required>
             </div>
-            <button type="submit" class="btn btn-primary w-100">ورود</button>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
           </form>
 
           <hr>
           <p class="text-center">
-            حساب ندارید؟ <a href="{% url 'register' %}">ثبت‌نام کنید</a>
+            Don’t have an account? <a href="{% url 'register' %}">Register here</a>
           </p>
         </div>
       </div>

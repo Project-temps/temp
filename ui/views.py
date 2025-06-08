@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.mail import send_mail  # اگر بعداً خواستید ایمیل واقعی بزنید
+from django.contrib.staticfiles import finders
+from django.http import JsonResponse
 
 # ---------- عمومی ----------
 def home(request):
@@ -33,7 +35,13 @@ def contact(request):
 def dashboard(request):
     return render(request, "dashboard.html")
 
-
+def dash_static_debug(request):
+    files = []
+    for finder in finders.get_finders():
+        for path, storage in finder.list([]):
+            if path.startswith("dash"):
+                files.append(path)
+    return JsonResponse({"dash_assets": sorted(files)})
 
 # from django.shortcuts import render, redirect
 # from django.http import JsonResponse

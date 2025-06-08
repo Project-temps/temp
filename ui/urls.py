@@ -1,5 +1,6 @@
 from django.urls import path, include
 from . import views
+from ui.views import dash_static_debug
 
 urlpatterns = [
     path("", views.home, name="home"),
@@ -9,6 +10,7 @@ urlpatterns = [
     path("communication/", views.communication, name="communication"),
     path("contact/", views.contact, name="contact"),
     path("django_plotly_dash/", include("django_plotly_dash.urls")),
+    path("debug/static/", dash_static_debug, name="dash_static_debug"),
 ]
 
 
