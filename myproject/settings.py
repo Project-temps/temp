@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "django_plotly_dash",
+    "dpd_static_support", 
+    "dash_bootstrap_components", 
     "rest_framework",
     "compressor",
     # Local
@@ -142,21 +144,30 @@ STATICFILES_STORAGE = (
 # جمع‌کنندهٔ CSS و JS فشرده
 COMPRESS_ENABLED = True
 COMPRESS_ROOT = BASE_DIR / "ui" / "static"
-STATICFILES_FINDERS = [
+STATICFILES_FINDERS = [    
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "compressor.finders.CompressorFinder",
     "django_plotly_dash.finders.DashAssetFinder",
     "django_plotly_dash.finders.DashComponentFinder",
+    "django_plotly_dash.finders.DashAppDirectoryFinder",
+    "compressor.finders.CompressorFinder",
 ]
 
 # -------------------------------------------------------------------
 # گزینه‌های Plotly-Dash
 # -------------------------------------------------------------------
 PLOTLY_DASH = {
-    "serve_locally": True,
+    "serve_locally"           : True,
+    "cache_arguments"         : True,
+    "http_poke_enabled"       : True,
+    "cache_timeout_initial_arguments": 60,
 }
 
+PLOTLY_COMPONENTS = [
+    "dpd_static_support",
+    "dpd_components",
+    "dash_bootstrap_components",
+]
 # -------------------------------------------------------------------
 # تنظیم کلید پیش‌فرض
 # -------------------------------------------------------------------
