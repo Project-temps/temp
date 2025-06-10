@@ -141,6 +141,9 @@ STATICFILES_STORAGE = (
     "whitenoise.storage.CompressedManifestStaticFilesStorage"
 )
 
+if DEBUG:
+    WHITENOISE_USE_FINDERS = True
+
 # جمع‌کنندهٔ CSS و JS فشرده
 COMPRESS_ENABLED = True
 COMPRESS_ROOT = BASE_DIR / "ui" / "static"
