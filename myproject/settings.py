@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 Django settings for myproject project.
 
@@ -155,3 +156,180 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 ]
+=======
+from pathlib import Path
+import os
+from dotenv import load_dotenv
+import dj_database_url
+from django.contrib.messages import constants as messages
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
+
+# -------------------------------------------------------------------
+# هسته‌ی امنیت و حالت اجرا
+# -------------------------------------------------------------------
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "change-this-in-prod")
+DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "dmsplatform.pro",
+    "www.dmsplatform.pro",
+    "185.215.244.171",
+]
+
+# -------------------------------------------------------------------
+# اپلیکیشن‌ها
+# -------------------------------------------------------------------
+INSTALLED_APPS = [
+    # Django core
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    # Third-party
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "django_plotly_dash",
+    "dpd_static_support", 
+    "dash_bootstrap_components", 
+    "rest_framework",
+    "compressor",
+    # Local
+    "ui",
+    "authentication",
+    "api",
+    "data_management",
+    "data_processing",
+]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# -------------------------------------------------------------------
+# میان‌افزارها
+# -------------------------------------------------------------------
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_plotly_dash.middleware.BaseMiddleware",
+]
+
+# -------------------------------------------------------------------
+# قالب‌ها
+# -------------------------------------------------------------------
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [
+            BASE_DIR / "ui" / "templates",
+            BASE_DIR / "ui" / "templates" / "sneat_html",
+        ],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    }
+]
+
+ROOT_URLCONF = "myproject.urls"
+WSGI_APPLICATION = "myproject.wsgi.application"
+
+# -------------------------------------------------------------------
+# پایگاه داده
+# -------------------------------------------------------------------
+DATABASES = {
+    "default": dj_database_url.parse(
+        os.getenv(
+            "DATABASE_URL",
+            "postgres://et4d_user:0000@localhost:5432/et4d_db",
+        ),
+        conn_max_age=600,
+        ssl_require=False,
+    )
+}
+
+# -------------------------------------------------------------------
+# احراز هویت
+# -------------------------------------------------------------------
+# AUTH_USER_MODEL = "authentication.User"  # اگر مدل سفارشی ساخته‌اید
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "dashboard"
+LOGOUT_REDIRECT_URL = "home"
+
+# -------------------------------------------------------------------
+# پیام‌ها
+# -------------------------------------------------------------------
+MESSAGE_TAGS = {
+    messages.DEBUG: "secondary",
+    messages.INFO: "info",
+    messages.SUCCESS: "success",
+    messages.WARNING: "warning",
+    messages.ERROR: "danger",
+}
+
+# -------------------------------------------------------------------
+# بین‌الملل
+# -------------------------------------------------------------------
+LANGUAGE_CODE = "en-us"
+TIME_ZONE = "Europe/Berlin"
+USE_I18N = True
+USE_TZ = True
+
+# -------------------------------------------------------------------
+# فایل‌های استاتیک
+# -------------------------------------------------------------------
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "ui" / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = (
+    "whitenoise.storage.CompressedManifestStaticFilesStorage"
+)
+
+# جمع‌کنندهٔ CSS و JS فشرده
+COMPRESS_ENABLED = True
+COMPRESS_ROOT = BASE_DIR / "ui" / "static"
+STATICFILES_FINDERS = [    
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "django_plotly_dash.finders.DashAssetFinder",
+    "django_plotly_dash.finders.DashComponentFinder",
+    "django_plotly_dash.finders.DashAppDirectoryFinder",
+    "compressor.finders.CompressorFinder",
+]
+
+# -------------------------------------------------------------------
+# گزینه‌های Plotly-Dash
+# -------------------------------------------------------------------
+PLOTLY_DASH = {
+    "serve_locally"           : True,
+    "cache_arguments"         : True,
+    "http_poke_enabled"       : True,
+    "cache_timeout_initial_arguments": 60,
+}
+
+PLOTLY_COMPONENTS = [
+    "dpd_static_support",
+    "dpd_components",
+    "dash_bootstrap_components",
+]
+# -------------------------------------------------------------------
+# تنظیم کلید پیش‌فرض
+# -------------------------------------------------------------------
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+X_FRAME_OPTIONS = "SAMEORIGIN"
+>>>>>>> 7576c1d35bb7910344a6ac3a18c4a6d539cb55fd
