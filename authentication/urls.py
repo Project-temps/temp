@@ -1,6 +1,14 @@
 from django.urls import path
 from . import views
 
+<<<<<<< HEAD
+urlpatterns = [
+    path('login/', views.user_login, name='login'),
+    path('logout/', views.user_logout, name='user_logout'),
+]
+
+
+=======
 
 from django.urls import path
 from django.contrib.auth import views as auth_views
@@ -39,4 +47,5 @@ urlpatterns = [
 # ]
 
 
+>>>>>>> 7576c1d35bb7910344a6ac3a18c4a6d539cb55fd
 # admin pass:1234

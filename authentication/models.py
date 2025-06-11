@@ -1,4 +1,8 @@
 from django.db import models
+<<<<<<< HEAD
+
+# Create your models here.
+=======
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
@@ -16,3 +20,4 @@ class Profile(models.Model):
     # در صورت نیاز می‌توانید فیلدهای بیشتری اضافه کنید
     def __str__(self):
         return f"{self.user.username} ({self.group})"
+>>>>>>> 7576c1d35bb7910344a6ac3a18c4a6d539cb55fd

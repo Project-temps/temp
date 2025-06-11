@@ -1,5 +1,9 @@
 {% extends "base.html" %}
+<<<<<<< HEAD
+{% load static %}
+=======
 {% load static %} 
+>>>>>>> 7576c1d35bb7910344a6ac3a18c4a6d539cb55fd
 {% load plotly_dash %}
 
 {% block title %}Dashboard • ET4D{% endblock %}
@@ -20,6 +24,20 @@
         </div>
       </div>
       <a href="{% url 'register' %}" class="btn btn-success me-2">Create account</a>
+<<<<<<< HEAD
+      <a href="{% url 'login' %}" class="btn btn-outline-primary">Log in</a>
+    </div>
+    <div class="col-12 col-lg-4 text-center">
+      <img
+        src="{% static 'sneat/assets/img/illustrations/man-with-laptop-light.png' %}"
+        class="img-fluid"
+        style="max-height:250px;"
+        alt="Dashboard illustration"
+      >
+    </div>
+  </div>
+
+=======
       <a href="{% url 'login' %}"    class="btn btn-outline-primary">Log in</a>
     </div>
     <div class="col-12 col-lg-4 text-center">
@@ -29,10 +47,13 @@
   </div>
 
   {# Here we mount the Dash app #}
+>>>>>>> 7576c1d35bb7910344a6ac3a18c4a6d539cb55fd
   <div class="card shadow-sm p-3">
     {% plotly_app name="FarmTimeSeries" %}
   </div>
 {% endblock %}
+<<<<<<< HEAD
+=======
 
 {% comment %} {% load static plotly_dash %}
 <!DOCTYPE html>
@@ -128,3 +149,4 @@
     {% block extra_js %}{% endblock %}
   </body>
 </html> {% endcomment %}
+>>>>>>> 7576c1d35bb7910344a6ac3a18c4a6d539cb55fd

@@ -1,5 +1,8 @@
 from django.db import models
 
+<<<<<<< HEAD
+# Create your models here.
+=======
 class Farm(models.Model):
     name = models.CharField(max_length=100, unique=True)
     country = models.CharField(max_length=80)
@@ -21,3 +24,4 @@ class SensorReading(models.Model):
 
     def __str__(self):
         return f"{self.farm}-{self.parameter}@{self.ts}"
+>>>>>>> 7576c1d35bb7910344a6ac3a18c4a6d539cb55fd
