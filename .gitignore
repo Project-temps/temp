@@ -43,3 +43,4 @@ db.sqlite3
 .vscode/
 *.sublime-project
 *.sublime-workspace
+.venv/
